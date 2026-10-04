@@ -341,6 +341,8 @@ add_library(
   cmLinkItemGraphVisitor.h
   cmGetPipes.cxx
   cmGetPipes.h
+  cmGlobalBSDMakefileGenerator.cxx
+  cmGlobalBSDMakefileGenerator.h
   cmGlobalCommonGenerator.cxx
   cmGlobalCommonGenerator.h
   cmGlobalGenerator.cxx

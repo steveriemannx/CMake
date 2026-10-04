@@ -192,6 +192,9 @@ public:
   /** Does the make tool interpret '\#' as '#'?  */
   virtual bool CanEscapeOctothorpe() const;
 
+  /** Format an include directive for the make tool in use.  */
+  virtual std::string FormatIncludeDirective(std::string const& file) const;
+
   bool IsIPOSupported() const override { return true; }
 
   bool SupportsShortObjectNames() const override;

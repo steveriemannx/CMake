@@ -119,6 +119,7 @@
 #  include "cmGlobalWatcomWMakeGenerator.h"
 #endif
 #if !defined(CMAKE_BOOTSTRAP)
+#  include "cmGlobalBSDMakefileGenerator.h"
 #  include "cmGlobalNinjaGenerator.h"
 #  include "cmGlobalUnixMakefileGenerator3.h"
 #elif defined(CMAKE_BOOTSTRAP_MAKEFILES)
@@ -3486,6 +3487,7 @@ void cmake::AddDefaultGenerators()
   this->Generators.push_back(cmGlobalGhsMultiGenerator::NewFactory());
 #  endif
   this->Generators.push_back(cmGlobalUnixMakefileGenerator3::NewFactory());
+  this->Generators.push_back(cmGlobalBSDMakefileGenerator::NewFactory());
   this->Generators.push_back(cmGlobalNinjaGenerator::NewFactory());
   this->Generators.push_back(cmGlobalNinjaMultiGenerator::NewFactory());
   this->Generators.push_back(cmGlobalFastbuildGenerator::NewFactory());

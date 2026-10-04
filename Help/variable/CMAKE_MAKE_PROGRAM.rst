@@ -8,8 +8,9 @@ name if it is expected to be in the ``PATH``.
 The tool selected depends on the :variable:`CMAKE_GENERATOR` used
 to configure the project:
 
-* The :ref:`Makefile Generators` set this to ``make``, ``gmake``, or
-  a generator-specific tool (e.g. ``nmake`` for :generator:`NMake Makefiles`).
+* The :ref:`Makefile Generators` set this to ``make``, ``gmake``,
+  ``bmake`` (for :generator:`BSD Makefiles`), or a generator-specific tool
+  (e.g. ``nmake`` for :generator:`NMake Makefiles`).
 
   These generators store ``CMAKE_MAKE_PROGRAM`` in the CMake cache
   so that it may be edited by the user.

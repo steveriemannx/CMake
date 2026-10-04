@@ -102,6 +102,12 @@ bool cmGlobalUnixMakefileGenerator3::CanEscapeOctothorpe() const
   return this->ForceUnixPaths;
 }
 
+std::string cmGlobalUnixMakefileGenerator3::FormatIncludeDirective(
+  std::string const& file) const
+{
+  return cmStrCat(this->IncludeDirective, ' ', file);
+}
+
 void cmGlobalUnixMakefileGenerator3::Configure()
 {
   // Initialize CMAKE_EDIT_COMMAND cache entry.

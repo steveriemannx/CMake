@@ -46,9 +46,10 @@ void cmMakefileUtilityTargetGenerator::WriteRuleFiles()
     cmStrCat(this->TargetBuildDirectoryFull, "/compiler_depend.make");
   *this->BuildFileStream
     << "# Include any custom commands dependencies for this target.\n"
-    << this->GlobalGenerator->IncludeDirective << " " << root
-    << cmSystemTools::ConvertToOutputPath(
-         this->LocalGenerator->MaybeRelativeToTopBinDir(dependFile))
+    << this->GlobalGenerator->FormatIncludeDirective(cmStrCat(
+         root,
+         cmSystemTools::ConvertToOutputPath(
+           this->LocalGenerator->MaybeRelativeToTopBinDir(dependFile))))
     << "\n\n";
   if (!cmSystemTools::FileExists(dependFile)) {
     // Write an empty dependency file.
@@ -76,10 +77,11 @@ void cmMakefileUtilityTargetGenerator::WriteRuleFiles()
     // Include the progress variables for the target.
     *this->BuildFileStream
       << "# Include the progress variables for this target.\n"
-      << this->GlobalGenerator->IncludeDirective << " " << root
-      << cmSystemTools::ConvertToOutputPath(
-           this->LocalGenerator->MaybeRelativeToTopBinDir(
-             this->ProgressFileNameFull))
+      << this->GlobalGenerator->FormatIncludeDirective(
+           cmStrCat(root,
+                    cmSystemTools::ConvertToOutputPath(
+                      this->LocalGenerator->MaybeRelativeToTopBinDir(
+                        this->ProgressFileNameFull))))
       << "\n\n";
   }
 

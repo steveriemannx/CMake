@@ -666,6 +666,7 @@ configured.
       Generator           Default make program           Alternatives
 ===================== =========================== ===========================
  XCode                 ``xcodebuild``
+ BSD Makefiles         ``bmake``                   ``make``
  Unix Makefiles        ``make``
  NMake Makefiles       ``nmake``                   ``jom``
  NMake Makefiles JOM   ``jom``                     ``nmake``

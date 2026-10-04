@@ -45,6 +45,7 @@ Makefile Generators
 .. toctree::
    :maxdepth: 1
 
+   /generator/BSD Makefiles
    /generator/Borland Makefiles
    /generator/MSYS Makefiles
    /generator/MinGW Makefiles

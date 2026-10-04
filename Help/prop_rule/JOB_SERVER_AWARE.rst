@@ -10,6 +10,8 @@ For the :generator:`Unix Makefiles`, :generator:`MSYS Makefiles`, and
 :generator:`MinGW Makefiles` generators this will add the ``+`` prefix to the
 recipe line. See the `GNU Make Documentation`_ for more information.
 
-This option is ignored by other generators.
+This option is ignored by other generators.  In particular, the
+:generator:`BSD Makefiles` generator ignores it because BSD make does not
+implement the GNU make job server protocol.
 
 .. _`GNU Make Documentation`: https://www.gnu.org/software/make/manual/html_node/MAKE-Variable.html
