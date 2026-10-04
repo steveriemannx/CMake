@@ -122,6 +122,9 @@
 #  include "cmGlobalBSDMakefileGenerator.h"
 #  include "cmGlobalNinjaGenerator.h"
 #  include "cmGlobalUnixMakefileGenerator3.h"
+#elif defined(CMAKE_BOOTSTRAP_BSDMAKEFILES)
+#  include "cmGlobalBSDMakefileGenerator.h"
+#  include "cmGlobalUnixMakefileGenerator3.h"
 #elif defined(CMAKE_BOOTSTRAP_MAKEFILES)
 #  include "cmGlobalUnixMakefileGenerator3.h"
 #elif defined(CMAKE_BOOTSTRAP_NINJA)
@@ -3493,6 +3496,9 @@ void cmake::AddDefaultGenerators()
   this->Generators.push_back(cmGlobalFastbuildGenerator::NewFactory());
 #elif defined(CMAKE_BOOTSTRAP_NINJA)
   this->Generators.push_back(cmGlobalNinjaGenerator::NewFactory());
+#elif defined(CMAKE_BOOTSTRAP_BSDMAKEFILES)
+  this->Generators.push_back(cmGlobalUnixMakefileGenerator3::NewFactory());
+  this->Generators.push_back(cmGlobalBSDMakefileGenerator::NewFactory());
 #elif defined(CMAKE_BOOTSTRAP_MAKEFILES)
   this->Generators.push_back(cmGlobalUnixMakefileGenerator3::NewFactory());
 #endif

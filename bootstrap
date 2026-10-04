@@ -700,7 +700,7 @@ Configuration:
   --parallel=n            bootstrap cmake in parallel, where n is
                           number of nodes [1]
   --generator=<generator> generator to use (MSYS Makefiles, Unix Makefiles,
-                          or Ninja)
+                          BSD Makefiles, or Ninja)
   --enable-ccache         Enable ccache when building cmake
   --init=FILE             load FILE as script to populate cache
   --system-libs           use all system-installed third-party libraries
@@ -1034,7 +1034,7 @@ done
 
 # Make sure the generator is valid
 case "${cmake_bootstrap_generator}" in
-  'MSYS Makefiles'|'Unix Makefiles'|'Ninja') ;;
+  'MSYS Makefiles'|'Unix Makefiles'|'BSD Makefiles'|'Ninja') ;;
   *) cmake_error 10 "Invalid generator: ${cmake_bootstrap_generator}"
 esac
 
@@ -1144,6 +1144,12 @@ else
     cmMakefileUtilityTargetGenerator \
     cmProcessTools \
     "
+
+  if test "${cmake_bootstrap_generator}" = "BSD Makefiles"; then
+    CMAKE_CXX_SOURCES="${CMAKE_CXX_SOURCES} \
+      cmGlobalBSDMakefileGenerator \
+      "
+  fi
 fi
 
 # Add Cygwin-specific flags
@@ -1671,6 +1677,8 @@ cmake_report cmConfigure.h${_tmp} "#define CM_FALLTHROUGH"
 
 if test "${cmake_bootstrap_generator}" = "Ninja"; then
   cmake_report cmConfigure.h${_tmp} "#define CMAKE_BOOTSTRAP_NINJA"
+elif test "${cmake_bootstrap_generator}" = "BSD Makefiles"; then
+  cmake_report cmConfigure.h${_tmp} "#define CMAKE_BOOTSTRAP_BSDMAKEFILES"
 else
   cmake_report cmConfigure.h${_tmp} "#define CMAKE_BOOTSTRAP_MAKEFILES"
 fi
